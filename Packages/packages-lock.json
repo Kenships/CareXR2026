@@ -1,5 +1,25 @@
 {
   "dependencies": {
+    "com.kyrylokuzyk.primetween": {
+      "version": "file:../Assets/Plugins/PrimeTween/internal/com.kyrylokuzyk.primetween.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
+    "com.sisus.init-args": {
+      "version": "file:com.sisus.init-args",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.sisus.shared": "1.0.0"
+      }
+    },
+    "com.sisus.shared": {
+      "version": "file:com.sisus.shared",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.8.28",
       "depth": 2,
