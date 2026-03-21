@@ -1,21 +1,23 @@
-using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using Obvious.Soap;
-using Sisus.Init;
 using UnityEngine;
 
 namespace _Project.Scripts
 {
     public class ReachCalibrationService : MonoBehaviour
     {
-        [SerializeField] private GameObject leftHand;
-        [SerializeField] private GameObject rightHand;
+        public float MaxLeftReach { get; private set; }
+        public float MaxRightReach { get; private set; }
+        
+        [SerializeField] private Transform leftHand;
+        [SerializeField] private Transform rightHand;
         
         [SerializeField] private ScriptableEventNoParam calibrate;
-        [SerializeField] private float calibrationTime;
         
-        private List<Vector3> _positions = new();
+        [SerializeField] private float calibrationTime = 5f;
+        
+        private List<Vector3> _leftPositions = new();
+        private List<Vector3> _rightPositions = new();
         
         private bool _isCalibrating;
         private float _timer;
@@ -35,17 +37,51 @@ namespace _Project.Scripts
             if (_timer >= calibrationTime)
             {
                 _isCalibrating = false;
+
+                FinishCalibration();
+                
                 return;
             }
+
+            _leftPositions.Add(leftHand.position);
+            _rightPositions.Add(rightHand.position);
+        }
+
+        private void FinishCalibration()
+        {
+            float maxLeft = 0;
             
-            _positions.Add(transform.position);
+            foreach (var position in _leftPositions)
+            {
+                if (position.y - transform.position.y > maxLeft)
+                {
+                    maxLeft = position.y - transform.position.y;
+                }
+            }
+            
+            float maxRight = 0;
+            
+            foreach (var position in _rightPositions)
+            {
+                if (position.y - transform.position.y > maxRight)
+                {
+                    maxRight = position.y - transform.position.y;
+                }
+            }
+            
+            MaxLeftReach = maxLeft;
+            MaxRightReach = maxRight;
+            
+            Debug.Log($"Max left reach: {maxLeft}");
+            Debug.Log($"Max right reach: {maxRight}");
         }
 
         private void StartCalibration()
         {
             _isCalibrating = true;
             _timer = 0;
-            _positions.Clear();
+            _leftPositions.Clear();
+            _rightPositions.Clear();
         }
     }
 }

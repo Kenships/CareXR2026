@@ -8,6 +8,8 @@ namespace _Project.Scripts
 {
     public class PunchController : MonoBehaviour
     {
+        [SerializeField] private ReachCalibrationService reachCalibrationService;
+        
         [SerializeField] private GameObject superAttackPrefab;
         [SerializeField] private float threshold = 0.2f;
         [SerializeField] private LayerMask layerMask;
@@ -39,6 +41,7 @@ namespace _Project.Scripts
             
             Shoot(obj.transform);
             _close.Remove(obj);
+            _timer = null;
         }
 
         private void OnCloseEnter(Collider obj)
@@ -59,6 +62,9 @@ namespace _Project.Scripts
 
         private void Update()
         {
+            far.SetReach(Mathf.Min(reachCalibrationService.MaxLeftReach, reachCalibrationService.MaxRightReach) * 0.9f);
+            close.SetReach(Mathf.Min(reachCalibrationService.MaxLeftReach, reachCalibrationService.MaxRightReach) * 0.5f);
+            
             if (_timer is { IsRunning: true })
             {
                 Debug.Log(100 - _timer.Progress * 100f);
