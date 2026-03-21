@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Project.Scripts.Util.ExtensionMethods;
+using _Project.Scripts.Util.Timer.Timers;
 using UnityEngine;
 
 namespace _Project.Scripts
@@ -13,8 +14,11 @@ namespace _Project.Scripts
         [SerializeField] private LayerMask targetMask;
         [SerializeField] private ColliderEnterEventTrigger close;
         [SerializeField] private ColliderEnterEventTrigger far;
+        [SerializeField] private float chargeTime = 0.5f;
 
         [SerializeField] private Bullet bullet;
+        
+        private CountdownTimer _timer;
         
         List<Collider> _close = new();
         private Collider[] _buffer = new Collider[100];
@@ -45,6 +49,11 @@ namespace _Project.Scripts
             }
             Debug.Log("Close");
             _close.Add(obj);
+            
+            if (_close.Count == 2)
+            {
+                
+            }
         }
         
         private void Shoot(Transform objTransform)
