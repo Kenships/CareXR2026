@@ -8,7 +8,7 @@ namespace _Project.Scripts
 {
     public class PunchController : MonoBehaviour
     {
-        
+        [SerializeField] private GameObject superAttackPrefab;
         [SerializeField] private float threshold = 0.2f;
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private LayerMask targetMask;
@@ -36,7 +36,7 @@ namespace _Project.Scripts
             {
                 return;
             }
-
+            
             Shoot(obj.transform);
             _close.Remove(obj);
         }
@@ -52,12 +52,29 @@ namespace _Project.Scripts
             
             if (_close.Count == 2)
             {
-                
+                _timer = new CountdownTimer(chargeTime);
+                _timer.Start();
             }
         }
-        
+
+        private void Update()
+        {
+            if (_timer is { IsRunning: true })
+            {
+                Debug.Log(100 - _timer.Progress * 100f);
+            }
+        }
+
         private void Shoot(Transform objTransform)
         {
+            if (_timer is { IsFinished: true })
+            {
+                _timer = null;
+                SuperAttack();
+                _close.Clear();
+                return;
+            }
+            
             int count = Physics.OverlapSphereNonAlloc(objTransform.position, 100f, _buffer, targetMask);
 
             Transform target = null;
@@ -70,8 +87,6 @@ namespace _Project.Scripts
                 for (int i = 0; i < count; i++)
                 {
                     var dot = Vector3.Dot(objTransform.forward, (_buffer[i].transform.position - objTransform.position).normalized);
-                    
-                    Debug.Log(dot);
                     
                     if (dot > bestDot && dot > threshold)
                     {
@@ -86,6 +101,11 @@ namespace _Project.Scripts
             
             Bullet b = Instantiate(bullet, objTransform.position, objTransform.rotation);
             b.Init(target);
+        }
+
+        private void SuperAttack()
+        {
+            Instantiate(superAttackPrefab, transform.position, transform.rotation);
         }
     }
 }
