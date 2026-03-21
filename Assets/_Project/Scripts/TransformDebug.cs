@@ -6,7 +6,8 @@ namespace _Project.Scripts
     {
         private void FixedUpdate()
         {
-            Debug.Log($"Position: {transform.position}, Rotation: {transform.rotation}");
+            Vector3 offset = new Vector3(0, 1.2f, 0);
+            Debug.Log($"{gameObject.name} has Position: {(transform.position - offset).magnitude}, Rotation: {transform.rotation}");
         }
     }
 }
