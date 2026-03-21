@@ -8,6 +8,7 @@ namespace _Project
     {
         [SerializeField] private float speed = 10f;
         [SerializeField] private float lifeTime = 5f;
+        [SerializeField] private GameObject[] explosionParticles;
 
         private Transform _target;
         
@@ -36,7 +37,19 @@ namespace _Project
 
         private void OnCollisionEnter(Collision other)
         {
+            Debug.Log("explodes"); 
+            if (explosionParticles.Length > 0)
+            {
+                int randomIndex = Random.Range(0, explosionParticles.Length);
+                
+                GameObject randomExplosion = explosionParticles[randomIndex];
+                
+                Instantiate(randomExplosion, transform.position, transform.rotation);
+                Debug.Log("exploded");
+            }
+            
             Destroy(gameObject);
+            
         }
     }
 }
