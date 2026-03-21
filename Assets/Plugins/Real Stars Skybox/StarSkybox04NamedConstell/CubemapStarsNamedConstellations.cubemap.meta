@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-guid: f57e241cdb19d3c4788594fdd1e24c73
+guid: b92c4123d667b9a49bfd7d0ab6c2e363
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 8900000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 116333
-  packageName: Real Stars Skybox Lite
-  packageVersion: 2.0
-  assetPath: Assets/Real Stars Skybox/StarSkybox04NamedConstell/CubemapStarsNamedConstellations.cubemap
-  uploadId: 324120

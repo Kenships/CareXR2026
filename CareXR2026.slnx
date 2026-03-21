@@ -1,0 +1,22 @@
+﻿<Solution>
+  <Project Path="InitArgs.csproj" />
+  <Project Path="InitArgs.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="AYellowpaper.SerializedCollections.csproj" />
+  <Project Path="InitArgs.Services.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.csproj" />
+  <Project Path="Unity.InternalAPIEditorBridgeDev.004.csproj" />
+  <Project Path="Obvious.Soap.Editor.csproj" />
+  <Project Path="Obvious.Soap.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
+  <Project Path="AYellowpaper.SerializedCollections.Editor.csproj" />
+  <Project Path="Wingman.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.Hands.csproj" />
+  <Project Path="Unity.XR.Hands.Samples.VisualizerSample.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj" />
+  <Project Path="Sisus.Shared.Editor.InspectorInjectors.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.Editor.csproj" />
+  <Project Path="PrimeTween.Installer.csproj" />
+</Solution>
