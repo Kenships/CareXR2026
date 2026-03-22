@@ -79,6 +79,7 @@ MonoBehaviour:
   - {fileID: 7970311781335358529, guid: ebedb22cba4dae64b94da36261363c97, type: 3}
   particleSound: {fileID: 8300000, guid: 62210703c2ca0d949be8ad0ea5b5abd2, type: 3}
   collideSound: {fileID: 8300000, guid: 06129fc2865f9a6498d51f8c91885c2b, type: 3}
+  destroyEvent: {fileID: 11400000, guid: 9ce2153d422d94b488710038baec1b1e, type: 2}
 --- !u!54 &-707972029358880429
 Rigidbody:
   m_ObjectHideFlags: 0
