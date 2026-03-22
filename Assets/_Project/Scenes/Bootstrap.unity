@@ -300,11 +300,12 @@ MonoBehaviour:
   OnBeforeSceneLoad:
     m_PersistentCalls:
       m_Calls: []
-  loadOnAwake: 0
+  loadOnAwake: 1
   setActive: 0
   activeSceneIndex:
     buildIndex: 0
-  scenesToLoad: []
+  scenesToLoad:
+  - buildIndex: 2
   unloadDisabled: 0
   scenesToUnload: []
   withOverlay: 0

@@ -24,6 +24,9 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        replayGame.OnRaised += TutorialCompleteOnRaised;
+        tutorialComplete.OnRaised += TutorialCompleteOnRaised;
+        endEvent.OnRaised += EndEventOnRaised;
         if (skipTutorial)
         {
             TutorialCompleteOnRaised();
@@ -37,14 +40,12 @@ public class LevelManager : MonoBehaviour
 
         left.castDistance = 10f;
         right.castDistance = 10f;
-        replayGame.OnRaised += TutorialCompleteOnRaised;
-        tutorialComplete.OnRaised += TutorialCompleteOnRaised;
-        endEvent.OnRaised += EndEventOnRaised;
     }
     
 
     private void EndEventOnRaised()
     {
+        Debug.Log("end event raised");
         punchController.enabled = false;
         endScreen.SetActive(true);
     }

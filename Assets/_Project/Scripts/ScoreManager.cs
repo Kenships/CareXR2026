@@ -31,8 +31,9 @@ public class ScoreManager : MonoBehaviour
 
     private void AsteroidCountOnOnValueChanged(int obj)
     {
-        if (asteroidCount.Value == 30)
+        if (asteroidCount.Value >= 30)
         {
+            Debug.Log("endEvent raised here");
             endEvent.Raise(); 
         }
     }
@@ -61,12 +62,11 @@ public class ScoreManager : MonoBehaviour
         destroyEvent.OnRaised -= DestroyEventOnRaised;
         hitEvent.OnRaised -= HitEventOnRaised;
         onStartEvent.OnRaised -= OnStartEventOnRaised;
-        asteroidCount.Value++; 
-        
     }
     
     private void DestroyEventOnRaised()
     {
+        asteroidCount.Value++; 
         multiplier.Value = baseMultiplier;
         Debug.Log("destroyEvent raised"); 
     }
