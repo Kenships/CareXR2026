@@ -74,7 +74,7 @@ MonoBehaviour:
   - {fileID: 5207954152841078818, guid: d5c8b1c8b8a586447b8ec61b27254cf7, type: 3}
   - {fileID: 5311969831498965783, guid: f4d9ffab41a91144ca16b5167c2de08f, type: 3}
   - {fileID: 7970311781335358529, guid: ebedb22cba4dae64b94da36261363c97, type: 3}
-  particleSound: {fileID: 8300000, guid: 290e8b8eaf1aa6e4abb9976b353c6c5c, type: 3}
+  particleSound: {fileID: 8300000, guid: 62210703c2ca0d949be8ad0ea5b5abd2, type: 3}
   collideSound: {fileID: 8300000, guid: 06129fc2865f9a6498d51f8c91885c2b, type: 3}
 --- !u!54 &-707972029358880429
 Rigidbody:

@@ -19,7 +19,7 @@ namespace _Project.Scripts
         [SerializeField] private LayerMask targetMask;
         [SerializeField] private ColliderEnterEventTrigger close;
         [SerializeField] private ColliderEnterEventTrigger far;
-        [SerializeField] private float chargeTime = 0.5f;
+        //[SerializeField] private float chargeTime = 0.5f;
 
         [SerializeField] private Bullet bullet;
         
