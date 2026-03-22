@@ -18,6 +18,7 @@ namespace _Project.Scripts
         [SerializeField] private GameObject[] explosionParticles;
         [SerializeField] private float speedMultiplier = 0.5f; 
         [SerializeField] private AudioClip particleSound;
+        [SerializeField] private AudioClip chargeSound;
         private AudioPooler _audioPooler; 
         private void Start()
         { 

@@ -13,6 +13,8 @@ namespace _Project.Scripts
         [SerializeField] private Transform rightHand;
         
         [SerializeField] private ScriptableEventNoParam calibrate;
+        [SerializeField] private ScriptableEventNoParam calibrationComplete;
+        [SerializeField] private FloatVariable calibrationCountdown;
         
         [SerializeField] private float calibrationTime = 5f;
         
@@ -26,6 +28,7 @@ namespace _Project.Scripts
         {
             calibrate.OnRaised += StartCalibration;
         }
+        
 
         private void Update()
         {
@@ -33,6 +36,7 @@ namespace _Project.Scripts
                 return;
             
             _timer += Time.deltaTime;
+            calibrationCountdown.Value = calibrationTime - _timer;
 
             if (_timer >= calibrationTime)
             {
@@ -72,8 +76,7 @@ namespace _Project.Scripts
             MaxLeftReach = maxLeft;
             MaxRightReach = maxRight;
             
-            Debug.Log($"Max left reach: {maxLeft}");
-            Debug.Log($"Max right reach: {maxRight}");
+            calibrationComplete.Raise();
         }
 
         private void StartCalibration()

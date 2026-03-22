@@ -18,17 +18,18 @@ public class AsteroidSpawn : MonoBehaviour
     private bool spawning;
 //    private Vector3 areaSize; 
 
-    void StartSpawning()
+    public void StartSpawning()
     {
-        spawning = true;
         numberSpawned = 0;
+        spawning = true;
     }
 
     void Update(){
-        if (spawning && numberSpawned >= numAstroids) return;
+        if (!spawning || numberSpawned >= numAstroids) return;
         
         if (timer >= secs_before_new_spawn){
             Spawn();
+            spawning = false;
             timer=0;
         } 
         if (straight){

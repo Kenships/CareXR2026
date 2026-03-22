@@ -1,12 +1,15 @@
 using System.Collections.Generic;
+using _Project.Scripts.Core.AudioPooling;
 using _Project.Scripts.Util.ExtensionMethods;
 using _Project.Scripts.Util.Timer.Timers;
 using PrimeTween;
+using Sisus.Init;
 using UnityEngine;
+using AudioType = _Project.Scripts.Core.AudioPooling.Interface.AudioType;
 
 namespace _Project.Scripts
 {
-    public class PunchController : MonoBehaviour
+    public class PunchController : MonoBehaviour <AudioPooler>
     {
         [SerializeField] private ReachCalibrationService reachCalibrationService;
         [SerializeField] private GameObject ChargeEffect;
@@ -18,8 +21,11 @@ namespace _Project.Scripts
         [SerializeField] private ColliderEnterEventTrigger close;
         [SerializeField] private ColliderEnterEventTrigger far;
         [SerializeField] private float chargeTime = 0.5f;
+        [SerializeField] private AudioClip chargeSound;
 
         [SerializeField] private Bullet bullet;
+        
+        private AudioPooler _audioPooler;
         
         private CountdownTimer _timer;
         
@@ -68,6 +74,10 @@ namespace _Project.Scripts
             if (_close.Count == 2 && _chargeEffect == null)
             {
                 _chargeEffect = Instantiate(ChargeEffect, transform.position, transform.rotation, transform);
+                _audioPooler.New3DAudio(chargeSound)
+                    .OnChannel(AudioType.Sfx)
+                    .AtPosition(transform.position)
+                    .Play(); 
                 Tween.Scale(
                     target: _chargeEffect.transform,
                     endValue: ChargeEffect.transform.localScale,
@@ -151,6 +161,11 @@ namespace _Project.Scripts
         private void SuperAttack()
         {
             Instantiate(superAttackPrefab, transform.position, transform.rotation);
+        }
+
+        protected override void Init(AudioPooler argument)
+        {
+            _audioPooler = argument; 
         }
     }
 }
