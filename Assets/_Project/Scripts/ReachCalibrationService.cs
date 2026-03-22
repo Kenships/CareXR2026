@@ -11,6 +11,9 @@ namespace _Project.Scripts
         
         [SerializeField] private Transform leftHand;
         [SerializeField] private Transform rightHand;
+
+        [SerializeField] private ScriptableEventNoParam startLogging;
+        [SerializeField] private ScriptableEventNoParam endLogging;
         
         [SerializeField] private ScriptableEventNoParam calibrate;
         [SerializeField] private ScriptableEventNoParam calibrationComplete;
@@ -79,6 +82,7 @@ namespace _Project.Scripts
             Debug.Log($"MaxLeftReach: {MaxLeftReach}, MaxRightReach: {MaxRightReach}");
             
             calibrationComplete.Raise();
+            endLogging.Raise();
         }
 
         private void StartCalibration()
@@ -87,6 +91,7 @@ namespace _Project.Scripts
             _timer = 0;
             _leftPositions.Clear();
             _rightPositions.Clear();
+            startLogging.Raise();
         }
     }
 }

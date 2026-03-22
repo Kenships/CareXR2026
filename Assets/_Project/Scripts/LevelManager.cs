@@ -16,6 +16,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject endScreen;
     [SerializeField] private ScriptableEventNoParam endEvent;
     [SerializeField] private IntVariable score;
+
+    [SerializeField] private ScriptableEventNoParam startLogging;
+    [SerializeField] private ScriptableEventNoParam endLogging;
+    
     [SerializeField] private ScriptableEventNoParam tutorialComplete;
     [SerializeField] private ScriptableEventNoParam reCalibrate;
     [SerializeField] private ScriptableEventNoParam replayGame;
@@ -45,6 +49,7 @@ public class LevelManager : MonoBehaviour
 
     private void EndEventOnRaised()
     {
+        endLogging.Raise();
         Debug.Log("end event raised");
         punchController.enabled = false;
         endScreen.SetActive(true);
@@ -52,6 +57,7 @@ public class LevelManager : MonoBehaviour
 
     private void TutorialCompleteOnRaised()
     {
+        startLogging.Raise();
         calibrationTutorial.SetActive(false);
         punchController.enabled = true;
         asteroidSpawn.StartSpawning();

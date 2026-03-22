@@ -347,6 +347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.ReachCalibrationService
   leftHand: {fileID: 1223369935}
   rightHand: {fileID: 763106624}
+  startLogging: {fileID: 11400000, guid: 553dd6c902cfe8c468095e77a113e641, type: 2}
+  endLogging: {fileID: 11400000, guid: 2f90bb634de38dc40bb56f41273d3731, type: 2}
   calibrate: {fileID: 11400000, guid: 3ad9060756e56c048bd0e48281dc2706, type: 2}
   calibrationComplete: {fileID: 11400000, guid: 74fae9dd5aaf4cf46aeb9fa1b3ce4a69, type: 2}
   calibrationCountdown: {fileID: 11400000, guid: 56f07e6baef0bdc4389f11e90e53bc20, type: 2}
@@ -490,6 +492,8 @@ MonoBehaviour:
   endScreen: {fileID: 1274747749}
   endEvent: {fileID: 11400000, guid: 7372b2820ea4c12459cf2dbe2fa8b29a, type: 2}
   score: {fileID: 11400000, guid: 50ff3f1cd0e5ee947b91bd812959f966, type: 2}
+  startLogging: {fileID: 11400000, guid: 553dd6c902cfe8c468095e77a113e641, type: 2}
+  endLogging: {fileID: 11400000, guid: 2f90bb634de38dc40bb56f41273d3731, type: 2}
   tutorialComplete: {fileID: 11400000, guid: 1fbaadf4f31de8a4e9ba98426e6da824, type: 2}
   reCalibrate: {fileID: 11400000, guid: c6f5a83ffb51d684a9c697f4fce08352, type: 2}
   replayGame: {fileID: 11400000, guid: c1ae351ab569dbe409de6a15c0f2022e, type: 2}
@@ -3211,6 +3215,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9137604340729869357, guid: a5e58d0b472f79d44b744febe2e71228, type: 3}
   m_PrefabInstance: {fileID: 1030737544}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1248615869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1248615871}
+  - component: {fileID: 1248615870}
+  m_Layer: 0
+  m_Name: PositionLogger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1248615870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248615869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29cdeff0c634a1c83e3153402c55df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.PositionLogger
+  calibrationEvent: {fileID: 11400000, guid: 3ad9060756e56c048bd0e48281dc2706, type: 2}
+  startLogging: {fileID: 11400000, guid: 553dd6c902cfe8c468095e77a113e641, type: 2}
+  endLogging: {fileID: 11400000, guid: 2f90bb634de38dc40bb56f41273d3731, type: 2}
+  left: {fileID: 1223369931}
+  right: {fileID: 763106620}
+--- !u!4 &1248615871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248615869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12624, y: 1.30659, z: 0.88617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254003041
 GameObject:
   m_ObjectHideFlags: 0
@@ -5570,3 +5623,4 @@ SceneRoots:
   - {fileID: 1280229788}
   - {fileID: 1263861198}
   - {fileID: 1274747753}
+  - {fileID: 1248615871}
