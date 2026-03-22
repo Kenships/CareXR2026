@@ -232,6 +232,7 @@ MonoBehaviour:
     m_Bits: 128
   close: {fileID: 1362958639}
   far: {fileID: 602174818}
+  chargeTime: 0.5
   bullet: {fileID: 6114851798657715013, guid: 8d5ca0a80f9b0d343bf44f7d9f92aac7, type: 3}
 --- !u!114 &118342354
 MonoBehaviour:
