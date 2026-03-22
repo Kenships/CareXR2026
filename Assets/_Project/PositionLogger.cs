@@ -52,7 +52,7 @@ namespace _Project
 
         private void StopLogging()
         {
-            float initialTime = _leftPositions[0].time;
+            float initialTime = _leftPositions[3].time;
             
             List<(Vector3 lVel, float lVTime)> leftVelocity = new();
             List<(Vector3 rVel, float rVTime)> rightVelocity = new();
@@ -93,7 +93,7 @@ namespace _Project
             }
             
             
-            string fileName = $"{_name}-{DateTime.Now:yy-MM-dd-hh-mm-ss}.csv";
+            string fileName = $"/{_name}-{DateTime.Now:yy-MM-dd-hh-mm-ss}.csv";
             _sw =  new StreamWriter(Application.dataPath + fileName);
             
             Debug.Log(Application.dataPath + fileName);
