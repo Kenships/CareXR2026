@@ -2,9 +2,11 @@ using System;
 using _Project.Scripts.Core.AudioPooling;
 using _Project.Scripts.Core.AudioPooling.Interface;
 using _Project.Scripts.Util.ExtensionMethods;
+using Obvious.Soap;
 using Sisus.Init;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.XR.Hands.OpenXR;
 using AudioType = _Project.Scripts.Core.AudioPooling.Interface.AudioType;
 using Random = UnityEngine.Random;
 
@@ -18,7 +20,8 @@ namespace _Project
         [SerializeField] private float lifeTime = 5f;
         [SerializeField] private GameObject[] explosionParticles;
         [SerializeField] private AudioClip particleSound;
-        [SerializeField] private AudioClip collideSound; 
+        [SerializeField] private AudioClip collideSound;
+        [SerializeField] private ScriptableEventNoParam destroyEvent; 
         private AudioPooler _audioPooler; 
         private IAudioPlayer _audioPlayer;
         
@@ -78,6 +81,8 @@ namespace _Project
             
             Destroy(_buffer[0].gameObject);
             Destroy(gameObject);
+            destroyEvent.Raise();
+            
         }
 
         private void OnDestroy()
