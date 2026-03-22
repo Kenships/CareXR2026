@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Project.Scripts.Core.AudioPooling;
 using _Project.Scripts.Core.AudioPooling.Interface;
 using _Project.Scripts.Util.ExtensionMethods;
+using Obvious.Soap;
 using Sisus.Init;
 using UnityEngine;
 using AudioType = _Project.Scripts.Core.AudioPooling.Interface.AudioType;
@@ -10,8 +11,9 @@ using Random = UnityEngine.Random;
 
 namespace _Project.Scripts
 {
-    public class SuperAttack : MonoBehaviour<AudioPooler> 
+    public class SuperAttack : MonoBehaviour<AudioPooler>
     {
+        [SerializeField] private ScriptableEventNoParam destroyEvent;
         [SerializeField] private List<ColliderEnterEventTrigger> colliderTriggers;
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float lifeTIme = 10f;
@@ -48,7 +50,7 @@ namespace _Project.Scripts
             {
                 return;
             }
-            
+            destroyEvent?.Raise();
             Destroy(other.gameObject);
         }
     }

@@ -7,7 +7,8 @@ using UnityEngine.Rendering.Universal;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private ScriptableEventNoParam destroyEvent;
-    [SerializeField] private ScriptableEventNoParam onStartEvent; 
+    [SerializeField] private ScriptableEventNoParam onStartEvent;
+    [SerializeField] private ScriptableEventNoParam endEvent; 
     [SerializeField] private IntVariable score;
     [SerializeField] private ScriptableEventNoParam hitEvent;
     [SerializeField] private IntVariable multiplier;
@@ -15,6 +16,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int baseMultiplier = 1;
     [SerializeField] private int secondMultiplier = 2; 
     [SerializeField] private int thirdMultiplier = 3;
+    [SerializeField] private IntVariable asteroidCount; 
+    [SerializeField] private IntVariable hitAsteroidCount;
     
 
     private void Start()
@@ -22,6 +25,17 @@ public class ScoreManager : MonoBehaviour
         destroyEvent.OnRaised += DestroyEventOnRaised;
         hitEvent.OnRaised += HitEventOnRaised;
         onStartEvent.OnRaised += OnStartEventOnRaised;
+        
+        asteroidCount.OnValueChanged += AsteroidCountOnOnValueChanged;
+    }
+
+    private void AsteroidCountOnOnValueChanged(int obj)
+    {
+        if (asteroidCount.Value >= 30)
+        {
+            Debug.Log("endEvent raised here");
+            endEvent.Raise(); 
+        }
     }
 
     private void Update()
@@ -39,8 +53,8 @@ public class ScoreManager : MonoBehaviour
     {
         score.Value += baseScore * multiplier;
         multiplier.Value = Mathf.Min(multiplier.Value + 1, 3);
-        Debug.Log(score.Value+" score");
-        Debug.Log(multiplier.Value +"is the multiplier" );
+        asteroidCount.Value++;
+        hitAsteroidCount.Value++; 
     }
 
     private void OnDestroy()
@@ -52,6 +66,7 @@ public class ScoreManager : MonoBehaviour
     
     private void DestroyEventOnRaised()
     {
+        asteroidCount.Value++; 
         multiplier.Value = baseMultiplier;
         Debug.Log("destroyEvent raised"); 
     }

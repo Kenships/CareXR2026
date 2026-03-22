@@ -12,7 +12,6 @@ namespace _Project.Scripts
 {
     public class PunchController : MonoBehaviour <AudioPooler>
     {
-        [SerializeField] private GameObject superAttackCanvas;
         [SerializeField] private ReachCalibrationService reachCalibrationService;
         [SerializeField] private FloatVariable superAttackCharge;
         [SerializeField] private GameObject ChargeEffect;
@@ -39,8 +38,6 @@ namespace _Project.Scripts
 
         private void Start()
         {
-            superAttackCanvas.SetActive(false);
-            
             close.OnEnter += OnCloseEnter;
             far.OnExit += OnFarExit;
         }
@@ -91,7 +88,6 @@ namespace _Project.Scripts
                     ease: Ease.InExpo
                 );
                 
-                superAttackCanvas.SetActive(true);
                 
                 _timer = new CountdownTimer(chargeTime);
                 _timer.Start();
