@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.PunchController
   reachCalibrationService: {fileID: 118342355}
+  ChargeEffect: {fileID: 5128292013401181179, guid: cca5acb96cefddb478f93a731bec699b, type: 3}
   superAttackPrefab: {fileID: 2700286265283232516, guid: 9baf0d36036e1df4380d2c39d01504bf, type: 3}
   threshold: 0.9
   layerMask:
@@ -600,7 +601,7 @@ GameObject:
   - component: {fileID: 582877183}
   - component: {fileID: 582877185}
   - component: {fileID: 582877184}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SelectVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,9 +876,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5475489119846211014, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553897148237809278, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8468062595053858455, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
       propertyPath: m_Name
       value: Super Star (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468062595053858455, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9137604340729869357, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
       propertyPath: m_LocalScale.x
@@ -1343,7 +1356,7 @@ GameObject:
   - component: {fileID: 914099363}
   - component: {fileID: 914099365}
   - component: {fileID: 914099364}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SelectVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2017,9 +2030,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5475489119846211014, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553897148237809278, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8468062595053858455, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
       propertyPath: m_Name
       value: Super Star (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468062595053858455, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9137604340729869357, guid: f8b283dd736a10f46b85adcb0e1d3323, type: 3}
       propertyPath: m_LocalScale.x

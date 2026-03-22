@@ -2,13 +2,16 @@ using System;
 using System.Collections.Generic;
 using _Project.Scripts.Util.ExtensionMethods;
 using _Project.Scripts.Util.Timer.Timers;
+using PrimeTween;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Project.Scripts
 {
     public class PunchController : MonoBehaviour
     {
         [SerializeField] private ReachCalibrationService reachCalibrationService;
+        [SerializeField] private GameObject ChargeEffect;
         
         [SerializeField] private GameObject superAttackPrefab;
         [SerializeField] private float threshold = 0.2f;
@@ -22,13 +25,14 @@ namespace _Project.Scripts
         
         private CountdownTimer _timer;
         
+        private GameObject _chargeEffect;
+        
         List<Collider> _close = new();
         private Collider[] _buffer = new Collider[100];
 
         private void Start()
         {
             close.OnEnter += OnCloseEnter;
-            
             far.OnExit += OnFarExit;
         }
 
@@ -41,7 +45,13 @@ namespace _Project.Scripts
             
             Shoot(obj.transform);
             _close.Remove(obj);
-            _timer = null;
+
+            if (_chargeEffect != null)
+            {
+                Destroy(_chargeEffect);
+                _chargeEffect = null;
+                _timer = null;
+            }
         }
 
         private void OnCloseEnter(Collider obj)
@@ -51,10 +61,22 @@ namespace _Project.Scripts
                 return;
             }
             Debug.Log("Close");
-            _close.Add(obj);
-            
-            if (_close.Count == 2)
+
+            if (!_close.Contains(obj))
             {
+                _close.Add(obj);
+            }
+            
+            if (_close.Count == 2 && _chargeEffect == null)
+            {
+                _chargeEffect = Instantiate(ChargeEffect, transform.position, transform.rotation, transform);
+                Tween.Scale(
+                    target: _chargeEffect.transform,
+                    endValue: ChargeEffect.transform.localScale,
+                    duration: chargeTime * 1.5f,
+                    ease: Ease.InExpo
+                );
+                
                 _timer = new CountdownTimer(chargeTime);
                 _timer.Start();
             }
@@ -67,7 +89,13 @@ namespace _Project.Scripts
             
             if (_timer is { IsRunning: true })
             {
+                Vector3 middle = (_close[0].transform.position + _close[1].transform.position) * 0.5f;
                 Debug.Log(100 - _timer.Progress * 100f);
+                
+                if (_chargeEffect == null)
+                    return;
+                
+                _chargeEffect.transform.position = middle;
             }
         }
 
@@ -76,6 +104,8 @@ namespace _Project.Scripts
             if (_timer is { IsFinished: true })
             {
                 _timer = null;
+                Destroy(_chargeEffect);
+                _chargeEffect = null;
                 SuperAttack();
                 _close.Clear();
                 return;

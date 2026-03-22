@@ -1,8 +1,10 @@
+using System;
 using _Project.Scripts.Core.AudioPooling;
 using _Project.Scripts.Core.AudioPooling.Interface;
 using Sisus.Init;
 using UnityEngine;
 using AudioType = _Project.Scripts.Core.AudioPooling.Interface.AudioType;
+using Random = UnityEngine.Random;
 
 namespace _Project.Scripts
 {
@@ -25,7 +27,7 @@ namespace _Project.Scripts
                 
                 GameObject randomExplosion = explosionParticles[randomIndex];
                 
-                Instantiate(randomExplosion, transform.position, Quaternion.AngleAxis(90f, Vector3.up) * transform.rotation);
+                Instantiate(randomExplosion, transform.position, Quaternion.AngleAxis(90f, transform.up) * transform.rotation, transform);
                 randomExplosion.transform.localScale = new Vector3(4f, 4f, 4f);
             }
             Destroy(gameObject, lifeTIme);
@@ -33,6 +35,11 @@ namespace _Project.Scripts
         protected override void Init(AudioPooler argument)
         {
             _audioPooler = argument; 
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            Destroy(other.gameObject);
         }
     }
 }
