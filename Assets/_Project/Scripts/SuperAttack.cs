@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using _Project.Scripts.Core.AudioPooling;
 using _Project.Scripts.Core.AudioPooling.Interface;
+using _Project.Scripts.Util.ExtensionMethods;
 using Sisus.Init;
 using UnityEngine;
 using AudioType = _Project.Scripts.Core.AudioPooling.Interface.AudioType;
@@ -10,6 +12,8 @@ namespace _Project.Scripts
 {
     public class SuperAttack : MonoBehaviour<AudioPooler> 
     {
+        [SerializeField] private List<ColliderEnterEventTrigger> colliderTriggers;
+        [SerializeField] private LayerMask layerMask;
         [SerializeField] private float lifeTIme = 10f;
         [SerializeField] private GameObject[] explosionParticles;
         [SerializeField] private float speedMultiplier = 0.5f; 
@@ -39,6 +43,11 @@ namespace _Project.Scripts
 
         private void OnCollisionEnter(Collision other)
         {
+            if (!other.collider.IsOnLayer(layerMask))
+            {
+                return;
+            }
+            
             Destroy(other.gameObject);
         }
     }

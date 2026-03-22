@@ -6,8 +6,8 @@ namespace _Project.Scripts
 {
     public class ReachCalibrationService : MonoBehaviour
     {
-        public float MaxLeftReach { get; private set; }
-        public float MaxRightReach { get; private set; }
+        public float MaxLeftReach { get; private set; } = 0.55f;
+        public float MaxRightReach { get; private set; } = 0.55f;
         
         [SerializeField] private Transform leftHand;
         [SerializeField] private Transform rightHand;

@@ -1,6 +1,7 @@
 using System;
 using _Project.Scripts.Core.AudioPooling;
 using _Project.Scripts.Core.AudioPooling.Interface;
+using _Project.Scripts.Util.ExtensionMethods;
 using Sisus.Init;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,6 +12,8 @@ namespace _Project
 {
     public class Bullet : MonoBehaviour<AudioPooler> 
     {
+        [SerializeField] private LayerMask layerMask;
+        
         [SerializeField] private float speed = 10f;
         [SerializeField] private float lifeTime = 5f;
         [SerializeField] private GameObject[] explosionParticles;
@@ -18,6 +21,8 @@ namespace _Project
         [SerializeField] private AudioClip collideSound; 
         private AudioPooler _audioPooler; 
         private IAudioPlayer _audioPlayer;
+        
+        private Collider[] _buffer = new Collider[100];
 
         private Transform _target;
         
@@ -46,14 +51,16 @@ namespace _Project
         private void Update()
         {
             
-            Vector3 dir = _target ? (_target.position + _offset)  - transform.position : transform.forward;
+            Vector3 dir = _target ? (_target.position + _offset) - transform.position : transform.forward;
             
             
             _rigidbody.linearVelocity = dir.normalized * speed;
-        }
+            
+            int count = Physics.OverlapSphereNonAlloc(transform.position, 0.5f, _buffer, layerMask);
 
-        private void OnCollisionEnter(Collision other)
-        {
+            if (count == 0)
+                return;
+            
             _audioPooler.New3DAudio(collideSound)
                 .OnChannel(AudioType.Sfx)
                 .AtPosition(transform.position)
@@ -69,9 +76,10 @@ namespace _Project
                 
                 Debug.Log("exploded");
             }
+
             
+            Destroy(_buffer[0].gameObject);
             Destroy(gameObject);
-            
         }
 
         private void OnDestroy()

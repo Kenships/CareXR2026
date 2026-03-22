@@ -7,19 +7,29 @@ public class AsteroidSpawn : MonoBehaviour
     [SerializeField] private List<GameObject> prefab;
     [SerializeField] private float secs_before_new_spawn;
     [SerializeField] private bool straight;
-    private float last; 
+    [SerializeField] private Transform target;
+    [SerializeField] private int numAstroids = 30;
+    private float timer; 
     private int which_asteroid; 
     private float radius;
+    
+    private int numberSpawned = 0;
+
+    private bool spawning;
 //    private Vector3 areaSize; 
 
-    void Start(){
-        last=Time.time;
+    void StartSpawning()
+    {
+        spawning = true;
+        numberSpawned = 0;
     }
 
     void Update(){
-        if (Time.time-last >= secs_before_new_spawn){
+        if (spawning && numberSpawned >= numAstroids) return;
+        
+        if (timer >= secs_before_new_spawn){
             Spawn();
-            last=Time.time;
+            timer=0;
         } 
         if (straight){
             radius=2;
@@ -28,6 +38,8 @@ public class AsteroidSpawn : MonoBehaviour
             radius=15;
             //areaSize = new Vector3(10f, 4f, 0f);
         }
+        
+        timer += Time.deltaTime;
     }
 
     void Spawn()
@@ -35,19 +47,16 @@ public class AsteroidSpawn : MonoBehaviour
         //Vector3 randomPos = transform.position + new Vector3(0f,0f,60f) + new Vector3(
         //    Random.Range(-areaSize.x /2, areaSize.x/2),Random.Range(0,areaSize.y),Random.Range(0,areaSize.z)
         //);
+        numberSpawned++;
 
-
-        Vector2 circle = Random.insideUnitCircle * radius;
-        float spawnDistance = 40f;
-        Vector3 randomPos =
-            transform.position
-            + transform.forward * spawnDistance
-            + transform.right * circle.x
-            + transform.up * circle.y;
+        Vector3 circle = Random.insideUnitCircle * radius;
+        Vector3 randomPos = transform.position + circle;
+        
+        
 
         GameObject obj = Instantiate(prefab[which_asteroid], randomPos, Quaternion.identity);
         AsteroidTowardsViewer script = obj.GetComponent<AsteroidTowardsViewer>();
-        script.viewer = Camera.main.transform;
+        script.Init(target);
         script.fly_straight = straight;
 
         which_asteroid=(which_asteroid+1) % prefab.Count;

@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using _Project.Scripts.Util.ExtensionMethods;
 using _Project.Scripts.Util.Timer.Timers;
 using PrimeTween;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace _Project.Scripts
 {
@@ -19,7 +17,7 @@ namespace _Project.Scripts
         [SerializeField] private LayerMask targetMask;
         [SerializeField] private ColliderEnterEventTrigger close;
         [SerializeField] private ColliderEnterEventTrigger far;
-        //[SerializeField] private float chargeTime = 0.5f;
+        [SerializeField] private float chargeTime = 0.5f;
 
         [SerializeField] private Bullet bullet;
         
@@ -112,21 +110,32 @@ namespace _Project.Scripts
             }
             
             int count = Physics.OverlapSphereNonAlloc(objTransform.position, 100f, _buffer, targetMask);
+            
+            List<Collider> colliders = new List<Collider>();
 
+            for (int i = 0; i < count; i++)
+            {
+                if (Vector3.Dot(objTransform.forward, _buffer[i].transform.position - objTransform.position) >
+                    threshold)
+                {
+                    colliders.Add(_buffer[i]);
+                }
+            }
+            
             Transform target = null;
             
-            if (count > 0)
+            if (colliders.Count > 0)
             {
-                float bestDot = float.MinValue;
+                float bestDistance = float.MaxValue;
                 int bestIndex = -1;
 
                 for (int i = 0; i < count; i++)
                 {
-                    var dot = Vector3.Dot(objTransform.forward, (_buffer[i].transform.position - objTransform.position).normalized);
+                    var distance = Vector3.Distance(objTransform.position, _buffer[i].transform.position);
                     
-                    if (dot > bestDot && dot > threshold)
+                    if (distance < bestDistance)
                     {
-                        bestDot = dot;
+                        bestDistance = distance;
                         bestIndex = i;
                     }
                 }
