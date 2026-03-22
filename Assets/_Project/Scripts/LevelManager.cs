@@ -6,6 +6,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors.Casters;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private bool skipTutorial;
+    
     [SerializeField] private GameObject calibrationTutorial;
     [SerializeField] private PunchController punchController;
     [SerializeField] private AsteroidSpawn asteroidSpawn;
@@ -18,6 +20,12 @@ public class LevelManager : MonoBehaviour
     
     private void Start()
     {
+        if (skipTutorial)
+        {
+            TutorialCompleteOnRaised();
+            return;
+        }
+        
         punchController.enabled = false;
         calibrationTutorial.SetActive(true);
         starPositioner.gameObject.SetActive(false);

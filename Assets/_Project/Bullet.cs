@@ -40,9 +40,8 @@ namespace _Project
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
-           _audioPlayer = _audioPooler.New3DAudio(particleSound)
+           _audioPlayer = _audioPooler.New2DAudio(particleSound)
                 .OnChannel(AudioType.Sfx)
-                .AtPosition(transform.position)
                 .Play(); 
             Destroy(gameObject, lifeTime);
             _rigidbody.angularVelocity = Random.insideUnitCircle;
@@ -61,9 +60,8 @@ namespace _Project
             if (count == 0)
                 return;
             
-            _audioPooler.New3DAudio(collideSound)
+            _audioPooler.New2DAudio(collideSound)
                 .OnChannel(AudioType.Sfx)
-                .AtPosition(transform.position)
                 .Play(); 
             Debug.Log("explodes"); 
             if (explosionParticles.Length > 0)

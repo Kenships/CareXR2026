@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _Project.Scripts.Core.AudioPooling;
 using _Project.Scripts.Util.ExtensionMethods;
 using _Project.Scripts.Util.Timer.Timers;
+using Obvious.Soap;
 using PrimeTween;
 using Sisus.Init;
 using UnityEngine;
@@ -11,7 +12,9 @@ namespace _Project.Scripts
 {
     public class PunchController : MonoBehaviour <AudioPooler>
     {
+        [SerializeField] private GameObject superAttackCanvas;
         [SerializeField] private ReachCalibrationService reachCalibrationService;
+        [SerializeField] private FloatVariable superAttackCharge;
         [SerializeField] private GameObject ChargeEffect;
         
         [SerializeField] private GameObject superAttackPrefab;
@@ -36,6 +39,8 @@ namespace _Project.Scripts
 
         private void Start()
         {
+            superAttackCanvas.SetActive(false);
+            
             close.OnEnter += OnCloseEnter;
             far.OnExit += OnFarExit;
         }
@@ -52,6 +57,7 @@ namespace _Project.Scripts
 
             if (_chargeEffect != null)
             {
+                superAttackCharge.Value = 0f;
                 Destroy(_chargeEffect);
                 _chargeEffect = null;
                 _timer = null;
@@ -77,13 +83,15 @@ namespace _Project.Scripts
                 _audioPooler.New3DAudio(chargeSound)
                     .OnChannel(AudioType.Sfx)
                     .AtPosition(transform.position)
-                    .Play(); 
+                    .Play();
                 Tween.Scale(
                     target: _chargeEffect.transform,
                     endValue: ChargeEffect.transform.localScale,
                     duration: chargeTime * 1.5f,
                     ease: Ease.InExpo
                 );
+                
+                superAttackCanvas.SetActive(true);
                 
                 _timer = new CountdownTimer(chargeTime);
                 _timer.Start();
@@ -98,7 +106,7 @@ namespace _Project.Scripts
             if (_timer is { IsRunning: true })
             {
                 Vector3 middle = (_close[0].transform.position + _close[1].transform.position) * 0.5f;
-                Debug.Log(100 - _timer.Progress * 100f);
+                superAttackCharge.Value = 100f - _timer.Progress * 100f;
                 
                 if (_chargeEffect == null)
                     return;
@@ -111,6 +119,8 @@ namespace _Project.Scripts
         {
             if (_timer is { IsFinished: true })
             {
+                superAttackCharge.Value = 0f;
+                
                 _timer = null;
                 Destroy(_chargeEffect);
                 _chargeEffect = null;

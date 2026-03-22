@@ -25,11 +25,15 @@ public class AsteroidSpawn : MonoBehaviour
     }
 
     void Update(){
-        if (!spawning || numberSpawned >= numAstroids) return;
+        if (!spawning || numberSpawned >= numAstroids)
+        {
+            spawning = false;
+            return;
+        }
+        
         
         if (timer >= secs_before_new_spawn){
             Spawn();
-            spawning = false;
             timer=0;
         } 
         if (straight){
