@@ -46,7 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affc776c9ca1412e97b232ee50576334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.SuperAttack
-  lifeTIme: 3
+  lifeTIme: 1
+  explosionParticles:
+  - {fileID: 803111315396803322, guid: f445f726e3268f64198d43b3d2ac5baf, type: 3}
+  - {fileID: 7920514347154570341, guid: f148c6a6e7067e2468ec70f52b4b0755, type: 3}
+  speedMultiplier: 0.5
+  particleSound: {fileID: 8300000, guid: 8cf3368fd4f364a40bd40f4f5c91dec2, type: 3}
 --- !u!1 &6661448581819193945
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +101,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6661448581819193945}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -208,7 +213,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6895318991877432202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
