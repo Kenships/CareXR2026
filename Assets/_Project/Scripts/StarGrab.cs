@@ -1,6 +1,7 @@
 using System;
 using PrimeTween;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -8,6 +9,9 @@ namespace _Project.Scripts
 {
     public class StarGrab : MonoBehaviour
     {
+        public UnityEvent OnGrab;
+
+        [SerializeField] private float grabDuration = 3f;
         [SerializeField] private Transform visual;
         private Vector3 startPosition;
         private Quaternion startRotation;
@@ -32,15 +36,18 @@ namespace _Project.Scripts
             Tween.Scale(
                 target: visual,
                 endValue: 0f,
-                duration: 3f
-            ).OnComplete(() => { Destroy(gameObject); }
+                duration: grabDuration
+            ).OnComplete(() =>
+                         {
+                             Destroy(gameObject); 
+                             OnGrab?.Invoke();
+                         }
             );
         }
 
         private void SelectExit(SelectExitEventArgs arg0)
         {
-            Tween.StopAll(transform);
-            
+            Tween.StopAll(visual);
             transform.position = startPosition;
             transform.rotation = startRotation;
             visual.localScale = startScale;
