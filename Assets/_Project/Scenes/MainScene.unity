@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   destroyEvent: {fileID: 11400000, guid: fa61b453f7e38934f918d14018c345c5, type: 2}
   onStartEvent: {fileID: 11400000, guid: 31cfc8cc8e16ae74ca163baa21343c0b, type: 2}
-  endEvent: {fileID: 0}
+  endEvent: {fileID: 11400000, guid: 7372b2820ea4c12459cf2dbe2fa8b29a, type: 2}
   score: {fileID: 11400000, guid: 50ff3f1cd0e5ee947b91bd812959f966, type: 2}
   hitEvent: {fileID: 11400000, guid: 9ce2153d422d94b488710038baec1b1e, type: 2}
   multiplier: {fileID: 11400000, guid: 3a8b5e35bb82d5a4a882c3701ec22b93, type: 2}
