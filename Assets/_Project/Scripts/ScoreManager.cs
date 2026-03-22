@@ -26,8 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(score.Value+" score");
-        Debug.Log(multiplier.Value +"is the multiplier" );
+        
         
     }
     private void OnStartEventOnRaised()
@@ -40,6 +39,8 @@ public class ScoreManager : MonoBehaviour
     {
         score.Value += baseScore * multiplier;
         multiplier.Value = Mathf.Min(multiplier.Value + 1, 3);
+        Debug.Log(score.Value+" score");
+        Debug.Log(multiplier.Value +"is the multiplier" );
     }
 
     private void OnDestroy()
@@ -52,5 +53,6 @@ public class ScoreManager : MonoBehaviour
     private void DestroyEventOnRaised()
     {
         multiplier.Value = baseMultiplier;
+        Debug.Log("destroyEvent raised"); 
     }
 }

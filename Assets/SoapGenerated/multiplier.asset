@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Obvious.Soap::Obvious.Soap.IntVariable
   TagIndex: 0
   Description: 
-  _guid: 
+  _guid: 3a8b5e35bb82d5a4a882c3701ec22b93
   _saveGuid: 0
-  _value: 0
+  _value: 1
   _debugLogEnabled: 0
   _saved: 0
   _defaultValue: 0
   _resetOn: 0
-  _runtimeValue: 0
+  _runtimeValue: 3
   _isClamped: 0
   _min:
     UseLocal: 1
