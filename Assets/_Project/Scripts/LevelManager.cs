@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private PunchController punchController;
     [SerializeField] private AsteroidSpawn asteroidSpawn;
     [SerializeField] private StarPositioner starPositioner;
+    [SerializeField] private GameObject scoreCanvas;
     
     [SerializeField] private ScriptableEventNoParam tutorialComplete;
     
@@ -25,7 +26,7 @@ public class LevelManager : MonoBehaviour
             TutorialCompleteOnRaised();
             return;
         }
-        
+        scoreCanvas.SetActive(false);
         punchController.enabled = false;
         calibrationTutorial.SetActive(true);
         starPositioner.gameObject.SetActive(false);
@@ -41,5 +42,6 @@ public class LevelManager : MonoBehaviour
         calibrationTutorial.SetActive(false);
         punchController.enabled = true;
         asteroidSpawn.StartSpawning();
+        scoreCanvas.SetActive(true);
     }
 }

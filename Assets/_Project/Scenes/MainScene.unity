@@ -297,7 +297,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118342351}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f5bff1bbca86284b93bf4166c32790a, type: 3}
   m_Name: 
@@ -487,6 +487,7 @@ MonoBehaviour:
   punchController: {fileID: 118342353}
   asteroidSpawn: {fileID: 672362589}
   starPositioner: {fileID: 1785189483}
+  scoreCanvas: {fileID: 1263861194}
   tutorialComplete: {fileID: 11400000, guid: 1fbaadf4f31de8a4e9ba98426e6da824, type: 2}
   left: {fileID: 1769046191}
   right: {fileID: 915846285}
@@ -933,8 +934,8 @@ MonoBehaviour:
     stop them.\r\nCollect stars to build your power and use your strength to clear
     the danger ahead.\r\nAre you ready? Let\u2019s begin!\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
+  m_sharedMaterial: {fileID: 7757203189948858499, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1000,7 +1001,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0.1, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &489028858
@@ -1370,8 +1371,8 @@ MonoBehaviour:
   m_text: "Watch out! Asteroids are coming! \r\nPunch at them to fire your stars,
     and remember to alternate your arms!\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
+  m_sharedMaterial: {fileID: 7757203189948858499, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1437,7 +1438,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0.40289292, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &635757314
@@ -1628,7 +1629,7 @@ MonoBehaviour:
   secs_before_new_spawn: 2
   straight: 1
   target: {fileID: 118342352}
-  numAstroids: 100
+  numAstroids: 30
 --- !u!4 &672362590
 Transform:
   m_ObjectHideFlags: 0
@@ -2345,8 +2346,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Score: 90'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d48f3f0829ce4b0488bea3c97e4d74b6, type: 2}
+  m_sharedMaterial: {fileID: 898416568648580933, guid: d48f3f0829ce4b0488bea3c97e4d74b6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2488,8 +2489,8 @@ MonoBehaviour:
   m_text: "Stars are appearing! Reach and grab them. \r\nWhen you catch a star, hold
     it for a few seconds to absorb the star power.\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
+  m_sharedMaterial: {fileID: 7757203189948858499, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2555,7 +2556,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0.40289292, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1208687288
@@ -2643,7 +2644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1254003042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2660,7 +2661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.102}
+  m_AnchoredPosition: {x: 0, y: 0.262}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254003043
@@ -2680,7 +2681,8 @@ MonoBehaviour:
   _intVariable: {fileID: 0}
   _floatVariable: {fileID: 11400000, guid: 56f07e6baef0bdc4389f11e90e53bc20, type: 2}
   _stringVariable: {fileID: 0}
-  Prefix: Hold For:\n
+  Prefix: 'Reach your arms up to the sky and look up at the stars! Lower them down
+    from your sides, extending them as far as you can.\nContinue for '
   Suffix: s
   Increment: 0
   MinMaxInt: {x: -2147483648, y: 2147483647}
@@ -2707,10 +2709,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hold For:\n9
+  m_text: Reach your arms up to the sky and look up at the stars! Lower them down
+    from your sides, extending them as far as you can.\nContinue for  10s
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
+  m_sharedMaterial: {fileID: 7757203189948858499, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2734,8 +2737,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.3
-  m_fontSizeBase: 0.3
+  m_fontSize: 0.1
+  m_fontSizeBase: 0.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3142,8 +3145,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NEXT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
+  m_sharedMaterial: {fileID: 7757203189948858499, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3282,8 +3285,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
+  m_sharedMaterial: {fileID: 7757203189948858499, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3349,7 +3352,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0.40289292, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1742843017
@@ -3625,8 +3628,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start Calibration
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
+  m_sharedMaterial: {fileID: 7757203189948858499, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3692,7 +3695,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1883689897
@@ -4023,8 +4026,8 @@ MonoBehaviour:
   m_text: "First, let\u2019s get you ready for space.\r\nReach your arms up to the
     sky and look up at the stars!\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
+  m_sharedMaterial: {fileID: 7757203189948858499, guid: 1a9f2570313457e43a408ff4404434bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4090,7 +4093,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0.40289292, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2009791255

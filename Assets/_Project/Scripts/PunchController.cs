@@ -101,7 +101,7 @@ namespace _Project.Scripts
         private void Update()
         {
             far.SetReach(Mathf.Min(reachCalibrationService.MaxLeftReach, reachCalibrationService.MaxRightReach) * 0.9f);
-            close.SetReach(Mathf.Min(reachCalibrationService.MaxLeftReach, reachCalibrationService.MaxRightReach) * 0.5f);
+            close.SetReach(Mathf.Min(reachCalibrationService.MaxLeftReach, reachCalibrationService.MaxRightReach) * 0.67f);
             
             if (_timer is { IsRunning: true })
             {

@@ -73,8 +73,10 @@ namespace _Project.Scripts
                 }
             }
             
-            MaxLeftReach = maxLeft;
-            MaxRightReach = maxRight;
+            MaxLeftReach = Mathf.Max(maxLeft, 0.4f);
+            MaxRightReach = Mathf.Max(maxLeft, 0.4f);
+            
+            Debug.Log($"MaxLeftReach: {MaxLeftReach}, MaxRightReach: {MaxRightReach}");
             
             calibrationComplete.Raise();
         }
