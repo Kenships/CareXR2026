@@ -2,9 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class PositionSave : MonoBehaviour
 {
-    
-    private List<string> names = new List<string>();
-    private List<Vector3> positions = new List<Vector3>();
+    public List<(string, Vector3)> records = new List<(string, Vector3)>(); 
     private float timer = 0f;
     [SerializeField]
     private float interval_timer = 1f;
@@ -20,13 +18,8 @@ public class PositionSave : MonoBehaviour
         timer += Time.deltaTime;
         if(timer >= interval_timer)
         {
-            string objName = gameObject.name;
-            Vector3 objPosition = transform.position;
-
-            names.Add(objName);
-            positions.Add(objPosition);
-            Debug.Log("Name: " + objName + "Position: "+ objPosition);
-
+            records.Add((gameObject.name, transform.position));
+            Debug.Log("Test: " + gameObject.name + ", " + transform.position);
             timer -= interval_timer;
         }
         
