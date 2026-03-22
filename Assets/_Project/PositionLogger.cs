@@ -98,7 +98,7 @@ namespace _Project
             
             Debug.Log(Application.dataPath + fileName);
             
-            _sw.WriteLine("L/R,p_x,p_y,p_z,v_x,v_y,v_z,a_x,a_y,a_z,t");
+            _sw.WriteLine("L/R,p_x,p_y,p_z,v_x,v_y,v_z,a_x,a_y,a_z,t,");
 
             for (int i = 0; i < leftAcc.Count; i++)
             {
